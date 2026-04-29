@@ -1,0 +1,171 @@
+/* 1. Variables y Reset */
+:root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --border: #e1e1e1;
+    --gray-light: #f8f8f8;
+    --gray-med: #888888;
+    --accent: #000000;
+    --error: #ff4444;
+    --success: #00c851;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { 
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+    background-color: #fafafa; 
+    color: var(--text);
+    line-height: 1.6;
+    padding: 40px 20px;
+}
+
+.container { max-width: 1100px; margin: 0 auto; }
+
+/* 2. Header */
+header { margin-bottom: 50px; text-align: left; border-left: 5px solid var(--accent); padding-left: 20px; }
+h1 { font-size: 2rem; font-weight: 800; text-transform: uppercase; letter-spacing: -1px; }
+.subtitle { color: var(--gray-med); font-size: 0.9rem; }
+
+/* 3. Layout en Grid */
+.grid { 
+    display: grid; 
+    grid-template-columns: 1.2fr 1fr; 
+    gap: 40px; 
+    align-items: start;
+}
+
+section { background: var(--bg); padding: 30px; border-radius: 2px; border: 1px solid var(--border); margin-bottom: 30px; }
+h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gray-med); margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+
+/* 4. Formularios */
+.form-group { margin-bottom: 20px; }
+label { font-size: 0.65rem; color: var(--gray-med); display: block; margin-bottom: 8px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
+
+select, input { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid var(--border); 
+    background: var(--bg);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+select:focus, input:focus { border-color: var(--accent); background: #fff; }
+
+.grid-form-small { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+}
+
+button { 
+    background: var(--accent); 
+    color: var(--bg); 
+    border: none; 
+    padding: 18px; 
+    width: 100%; 
+    cursor: pointer; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-weight: 700;
+    font-size: 0.8rem;
+    transition: opacity 0.3s ease;
+}
+
+button:hover { opacity: 0.8; }
+
+/* 5. Listas y Visores */
+.item-list, .lista-minimalista { margin-top: 10px; }
+
+.fila-producto { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 15px 0; 
+    border-bottom: 1px solid #f0f0f0; 
+    font-size: 0.85rem;
+}
+
+.fila-producto:last-child { border-bottom: none; }
+
+/* 6. Badges y Estados */
+.badge-stock { 
+    padding: 4px 10px; 
+    border-radius: 0px; 
+    font-size: 0.7rem; 
+    font-weight: 700; 
+    text-transform: uppercase;
+}
+
+.stock-bajo { background: #000; color: #fff; } /* Estilo minimalista extremo */
+.stock-ok { background: var(--gray-light); color: var(--gray-med); border: 1px solid var(--border); }
+
+.msg-guia { text-align: center; color: var(--gray-med); font-size: 0.8rem; padding: 20px; font-style: italic; }
+
+.separator { margin: 20px 0; border: none; border-top: 1px solid var(--border); }
+
+/* 7. Alertas Críticas */
+.alerta-critica { 
+    padding: 15px; 
+    background: #000; 
+    color: #fff; 
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; }
+    body { padding: 10px; }
+}
+/* Notificación minimalista */
+.toast-custom {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #000;
+    color: #fff;
+    padding: 16px 24px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.toast-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+.alerta-critica {
+    background: #000; /* Fondo negro sólido */
+    color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid #ff0000; /* Raya roja de advertencia */
+}
+
+.alerta-critica small {
+    display: block;
+    margin-top: 4px;
+    letter-spacing: 1px;
+}
+
+.alerta-critica .badge {
+    background: #fff;
+    color: #000;
+    padding: 4px 8px;
+    font-size: 0.7rem;
+    font-weight: 800;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     <link rel="icon" type="imagen.jpg" href="IMG/1200x630wa.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Gestión de Inventario</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Gestión de Stock Proactiva</h1>
+        <p class="subtitle">Menos es más. Control automatizado de sedes.</p>
+    </header>
+
+    <div class="grid">
+        <section class="card">
+            <h2>Registro de Entrada</h2>
+            
+            <div class="form-group">
+                <label>Sede de Destino</label>
+                <select id="selectSede">
+                    <option value="" selected>-- Selecciona una sede --</option>
+                    <option value="ASC Jumbo Vegas">ASC Jumbo Vegas</option>
+                    <option value="ASC Ciudad del rio">ASC Ciudad del rio</option>
+                    <option value="Escobero">Escobero</option>
+                    <option value="ASC San lucas">ASC San lucas</option>
+                </select>
+            </div>
+
+            <div class="grid-form-small">
+                <div class="form-group">
+                    <label>Responsable</label>
+                    <input type="text" id="inputResponsable" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label>Turno</label>
+                    <select id="selectTurno">
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Producto</label>
+                <select id="selectProducto"></select>
+            </div>
+
+            <div class="grid-form-small">
+                <div class="form-group">
+                    <label>Cantidad</label>
+                    <input type="number" id="inputCantidad" placeholder="Ej: 12">
+                </div>
+                <div class="form-group">
+                    <label>Vencimiento</label>
+                    <input type="date" id="inputFecha">
+                </div>
+            </div>
+
+            <button id="btnRegistrar">Registrar en Sistema</button>
+        </section>
+
+        <div class="sidebar">
+            <section class="card">
+                <h2>Stock Disponible</h2>
+                <div id="contenedorStockSede" class="lista-minimalista">
+                    <p class="msg-guia">Selecciona una sede arriba para ver el inventario.</p>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2>Alertas Críticas</h2>
+                <div id="listaAlertas" class="item-list">
+                    </div>
+            </section>
+        </div>
+    </div>
+
+    <section class="card">
+        <h2>Inventario Global (Cloud Sync)</h2>
+        <div id="listaStock" class="item-list">
+            </div>
+    </section>
+</div>
+
+<script src="script.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("TU_PUBLIC_KEY");
+   })();
+</script>
+</body>
+</html>
